@@ -1,0 +1,14 @@
+envia_shipping_dashboard:
+  path: /admin/envia-shipping/dashboard
+  defaults:
+    _controller: AdminEnviaDashboardController::indexAction
+
+envia_shipping_config:
+  path: /admin/envia-shipping/config
+  defaults:
+    _controller: AdminEnviaConfigController::indexAction
+
+envia_shipping_logs:
+  path: /admin/envia-shipping/logs
+  defaults:
+    _controller: AdminEnviaLogsController::indexAction
