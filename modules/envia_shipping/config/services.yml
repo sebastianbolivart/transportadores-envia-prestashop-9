@@ -1,0 +1,31 @@
+services:
+  envia_shipping.logger:
+    class: EnviaShipping\Infrastructure\Logger\EnviaLogger
+    arguments:
+      - '%envia_debug_logging%'
+
+  envia_shipping.cache:
+    class: EnviaShipping\Infrastructure\Cache\QuoteCache
+    arguments:
+      - '%envia_cache_ttl_seconds%'
+
+  envia_shipping.api_client:
+    class: EnviaShipping\Infrastructure\Api\EnviaApiClient
+    arguments:
+      - '%envia_api_key%'
+      - '%envia_sandbox%'
+      - '%envia_api_timeout%'
+      - '@envia_shipping.logger'
+
+  envia_shipping.carrier_mapper:
+    class: EnviaShipping\Application\Service\CarrierMapper
+
+  envia_shipping.quote_service:
+    class: EnviaShipping\Application\Service\ShippingQuoteService
+    arguments:
+      - '@envia_shipping.api_client'
+      - '@envia_shipping.carrier_mapper'
+      - '@envia_shipping.cache'
+      - '@envia_shipping.logger'
+      - '%envia_fallback_price%'
+      - '%envia_price_margin%'
