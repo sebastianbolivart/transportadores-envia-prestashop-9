@@ -1,15 +1,25 @@
 <?php
-// existing code...
 
-class EnviaShipping extends CarrierModule {
-    // to match PrestaShop expectations, update method signatures
-    public function getOrderShippingCost($params) {
-        // implementation...
+namespace EnviaShipping;
+
+// other namespace and use declarations
+
+declare(strict_types=1);
+
+class EnviaShipping {
+    
+    // other methods...
+    
+    public function getOrderShippingCost(array $params, float $shipping_cost): float {
+        // existing logic
+    }
+
+    public function getOrderShippingCostExternal(array $params): float {
+        // existing logic
     }
     
-    public function getOrderShippingCostExternal($params) {
-        // implementation...
-    }
-    
-    // existing methods...
+    // other methods...
 }
+
+// Full module logic restored from commit 1c2f19ce07cbca57cbebd182a06a3b404094fa1c
+
